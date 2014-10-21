@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>个人中心</title>
+<meta name="keywords" content="个人中心" />
+<meta name="description" content="个人中心" />
+#header()
+</head>
+<body>
+#navigator()
+<div class="wrap">
+<div class="W990">
+#pcTab("account")
+
+<!--账户信息-->
+<hgroup>
+<div class="userInfo">
+	<a href="javascript:;" id="accountTab" onClick="account.accountTab()" class="current">个人信息</a>
+	<a href="javascript:;" id="passwordTab" onClick="account.passwordTab()">修改密码</a>
+</div>
+<div id="dataWrap"><img src='images/loading.gif'/></div>
+</section>
+</hgroup>
+</div>
+</div>
+  <script id="accountData" type="text/html">
+	<section class="editContent">
+	<ul class="form" id="accountInfo">
+	<li><label>用户ID： </label><i class="input-text" id="userId">{{userId}}</i></li>
+	<li><label>我的邮箱：</label><i class="input-text">{{email}}</i></li>
+	<li><label>公司名称：</label><input type="text" value="{{org}}" id="org" /></li>
+	<li><label>联系电话：</label><input type="text" value="{{phone}}" id="phone" /></li>
+	<li class="label"><a href="javascript:;" class="btnBlue" onclick="account.modAccount()">修改</a></li>
+	</ul>
+  </script>
+  <script id="passwordData" type="text/html">
+  <section class="editContent">
+	<ul class="form" id="passwordInfo">
+	<li><label>当前密码：</label><input type="password" value=""  id="oldPasswd"/></li>
+	<li><label>新密码：</label><input type="password" value=""  id="newPasswd"/></li>
+	<li><label>再次输入：</label><input type="password" value=""  id="confirmPasswd"/></li>
+	<li class="label"><a href="javascript:;" class="btnBlue" onclick="account.modPassword()">修改</a></li>
+	</ul>
+  </script>
+#footer()
+#commonJs()
+<script type="text/javascript" src="js/page/account.js" ></script>
+</body>
+</html>

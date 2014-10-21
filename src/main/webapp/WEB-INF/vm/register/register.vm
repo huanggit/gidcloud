@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>注册</title>
+	<meta name="keywords" content="注册" />
+	<meta name="description" content="注册" />
+	#header()
+</head>
+<body>
+<div class="registerTop">
+  <div class="W990">
+    <div class="regLogo"><a href="index.html"><img src="images/reg-logo.png" title="GIDCLOUD" width="154" height="109" border="0"></a></div>
+    <div class="topTitle">新用户注册</div>
+  </div>
+</div>
+<div class="wrap">
+<div class="W990">
+  <div class="greyBox">
+    <div class="greyLine"></div>
+    <dl class="p-first current">
+      <dt>填写注册信息</dt>
+      <dd><i>1</i></dd>
+    </dl>
+     <dl class="p-third">
+      <dt>验证邮箱信息</dt>
+      <dd><i>2</i></dd>
+    </dl>
+  </div>
+  <div id="main">
+  <div class="registerForm">
+    <ul>
+      <li>
+        <input id="userName" type="text" value="" class="gray_a" placeholder="用户名" />
+      </li>
+      <li>
+        <input id="email" type="text" value="" class="gray_a" placeholder='邮箱'/>
+      </li>
+      <li>
+        <input id="password" type="password" value="" class="gray_a" placeholder='密码'/>
+      </li>
+      <li>
+      	<input id="confirmPassword" type="password" value="" class="gray_a" placeholder="确认密码"/>
+      </li>
+      <!--
+      <li>
+        <input type="text"  value="验证码" class="gray_a validatecode" placeholder='验证码' />
+        <a href="javascript:;"><img src="images/validate.png"></a>
+      </li>
+      <li>
+        <input id="agreeContract" type="checkbox" class="checkbox">我已阅读并同意<a target="_blank" href="protocol" class="orange pl">迪纳GID云平台注册协议</a></li>
+      </li>
+-->
+      <li>
+      	<a id="doRegister" href="javascript:;" class="btnGreenLonger <!--btngreyLonger-->" onClick='register.doRegister()'>注册</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>
+</div>
+#footer()
+#commonJs()
+<script type="text/javascript" src="js/page/register.js" ></script>
+</body>
+</html>

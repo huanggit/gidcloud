@@ -1,0 +1,26 @@
+<html>
+<head>
+<style>
+/* MAIL */
+.mailForm{ margin:30px;overflow:hidden; border-radius:5px; border:1px solid #ddd; box-shadow:1px 1px 3px #efefef; width:700px; padding-bottom:30px}
+.mailForm h1{ height:45px; line-height:45px; color:#999; border-bottom:1px solid #ddd; background:#f9f9f9; font-size:18px; font-weight:bold; padding-left:25px}
+.mailForm h2{height:70px; background:url(../images/reg-logo.png) #3579A6 25px -16px no-repeat; text-indent:-999em}
+.mailForm li{ padding:6px 25px; overflow:hidden}
+.mailForm li a{ color:#f00}
+.mailForm h3{ font-size:16px; font-weight:bold; line-height:26px; padding-left:25px;  margin:20px 0}
+.mailForm li span{ float:right; color:#999}
+</style>
+</head>
+<body>
+<div class="mailForm">
+<h1>Gid Cloud注册，验证激活</h1>
+<h2>Gid Cloud云平台</h2>
+<h3>$!{userName}，您好！</h3>
+<ul>
+<li class="f14 orange">感谢您注册Gid Cloud开发者，请点击下面的链接，完成邮箱验证：</li>
+<li><a target="_blank" href="$!{emailUrl}">$!{emailUrl}</a></li>
+<li><span>——Gid Cloud，您值得信赖的硬件云服务！</span></li>
+</ul>
+</div>
+</body>
+<html>

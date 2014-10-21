@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>登录</title>
+	<meta name="keywords" content="登录" />
+	<meta name="description" content="登录" />
+	#header()
+</head>
+<body class="global-bg">
+<div class="wrap">
+<div class="login">
+  <div class="loginContent">
+    <div class="loginContentBlue"><i class="loginContentBlueTitle"></i></div>
+    <form action="doLogin" method="post">
+    <div class="loginContentGrey">
+      <ul>
+        <li>
+          <input type="text" class="username" id="username" name="username" placeholder="请输入账号"/>
+        </li>
+        <li>
+          <input type="password" class="password" id="password" name="password" placeholder="请输入密码"/>
+        </li>
+      <!--
+        <li><cite>请输入验证码</cite>
+          <input type="text" class="validate"/>
+          <a href="javascript:;" class="validate-pic"><img src="images/validate.png"></a>
+        </li>
+     -->
+        <li>
+          <label><input type="checkbox" class="checkbox" id="ck_rmbUser"/>记住账号</label>
+          <a href="resetPassword" class="ml orange text_underline">忘记密码？</a></li>
+        <li><input type="submit" class="btnBlueLong" value="登录"></input></li>
+      </ul>
+      <div class="validateResault">$!{errorMessage}</div>
+    </div>
+    </form>
+  </div>
+</div>
+</div>
+#footer()
+#commonJs()
+<script type="text/javascript" src="js/page/login.js" ></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>找回密码</title>
+<meta name="keywords" content="找回密码" />
+<meta name="description" content="找回密码" />
+#header()
+</head>
+<body>
+<div class="registerTop">
+  <div class="W990">
+    <div class="regLogo"><a href="index.html"><img src="images/reg-logo.png" title="GIDCLOUD" width="154" height="109" border="0"></a></div>
+    <div class="topTitle">找回密码</div>
+  </div>
+</div>
+<div class="wrap">
+<div class="W990">
+<div class="tabBox">
+	
+</div>
+<div class="editContent">
+<p class="p10 f14 red tcenter">对不起，您的修改密码的链接错误，请重新发送重置密码邮件.</p>
+</div>
+</div>
+</div>
+#footer()
+
+</body>
+</html>

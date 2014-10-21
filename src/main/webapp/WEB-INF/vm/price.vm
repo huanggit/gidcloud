@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>价格</title>
+	<meta name="keywords" content="价格" />
+	<meta name="description" content="价格" />
+	#header()
+</head>
+<body>
+#navigator("price")
+<div class="price clearfix tcenter">
+<!--<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%" height="52">&nbsp;</td>
+    <td width="20%" class="free">免费版</td>
+    <td colspan="2" class="standard">标准版</td>
+    </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td width="24%">&nbsp;</td>
+    <td width="24%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="42" colspan="4" class="standard">功能</td>
+    </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>-->
+<img src="images/price.png" border="0" usemap="#Map">
+<map name="Map"><area shape="rect" coords="517,254,613,281" href="http://item.taobao.com/item.htm?id=15232851000" target="_blank">
+</map>
+</div>
+#footer()
+</body>
+</html>

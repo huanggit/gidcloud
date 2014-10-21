@@ -1,0 +1,151 @@
+#macro(year)
+2014
+#end
+
+
+#macro(header)
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/jquery-ui-bootstrap/jquery-ui-1.10.0.custom.css">
+<link rel="stylesheet" href="js/lib/paginator/bootstrap-paginator.css">
+<link rel="stylesheet" href="css/widget.css" type="text/css">
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="images/pic_1.jpg" type="image/x-icon">
+<!--[if IE]>
+  <script src="js/html5.js"></script>
+<![endif]-->
+#end
+
+
+#macro(demoDownloadUrl)
+download/demo.zip
+#end
+
+
+#macro(navigator $tag)
+  <div class="indexTop">
+  <div class="W990">
+    <ul class="indexLogo">
+      <a href="index"><img src="images/indexLogo.png"></a>
+    </ul>
+    <ul class="nav">
+      <a #if($tag == "index") href="javascript:;" class="current" #else href="index" #end >首页</a>
+      <a #if($tag == "doc") href="javascript:;" class="current" #else href="doc" #end >文档</a>
+      <a #if($tag == "faq") href="javascript:;" class="current" #else href="faq" #end >FAQ</a>
+      <a class="download" href="#demoDownloadUrl()">下载</a>
+<!--      
+      <a href="$!{bbsHome}" target="_blank">开发者社区</a>
+      <a href="http://item.taobao.com/item.htm?id=15232851000" target="_blank" class="buy">立即购买</a>
+-->   
+     </ul>
+     <ul class="navRight" id="navRight">
+    #if($accountname)
+    	<a href="device">个人中心</a><span>|</span><a href="logout">退出</a>
+    #else
+    	<a href="login">登录</a><span>|</span><a href="register">注册</a>
+    #end
+    </ul>
+  </div>
+  </div>
+#end
+
+
+#macro(footer)
+<footer class="footer footerGrey clearfix">©#year() 迪纳车联网 - 江苏南亿迪纳数字科技发展有限公司 版权所有，并保留所有权利。 ICP备案证书号： 苏ICP备10217951号-3</footer>
+#end
+
+
+#macro(commonJs)
+<script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery.cookie.js" ></script>
+<script type="text/javascript" src="js/lib/template-simple.js" ></script>
+<script type="text/javascript" src="js/lib/jquery.noty.packaged.min.js" ></script>
+<script type="text/javascript" src="js/lib/paginator/bootstrap-paginator.min.js"></script>
+<script type="text/javascript" src="js/lib/md5.js" ></script>
+<script type="text/javascript" src="js/lib/jquery-ui-1.10.4.min.js" ></script>
+<script type="text/javascript" src="js/lib/jquery.ui.datepicker-zh.js" ></script>
+<script type="text/javascript" src="js/common.js" ></script>
+#end
+
+
+#macro(pcTab $tag)
+<div class="tabBox">
+	<a #if($tag == "device") href="javascript:;" class="current" #else href="device" #end >我的设备</a>
+	<a #if($tag == "group") href="javascript:;" class="current" #else href="group" #end >我的分组</a>
+	<a #if($tag == "account") href="javascript:;" class="current" #else href="account" #end >账户信息</a>
+</div>
+#end
+
+
+#macro(docTerm $cmd $cmdName $descript $request $reqDetails $response $rspDetails)
+<hgroup class="clearfix">
+	<h5><a name="$cmd">$cmdName</a></h5>
+	<p class="mt5 ml">$descript</p>
+	<ul>
+	<i>请求：</i>
+	<article>
+	<p>示例：</p>
+	<pre>
+$request
+	</pre>
+	</article>
+	</ul>
+	
+	<ul>
+	<article>
+	<p>字段描述:</p>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <thead>
+	    <td width="20%">字段 </td><td width="20%">类型</td><td width="60%">描述</td>
+	  </thead>
+	  <tr>
+	    <td>cmd</td><td>string</td><td>接口名称: $cmd</td>
+	  </tr><tr>
+	    <td>userId</td><td>string</td><td>用户ID</td>
+	  </tr>
+	  #foreach($items in $reqDetails)
+	  <tr>
+	  	#foreach($item in $items)
+	    <td>$item</td>
+		#end
+	  </tr>
+	  #end
+	</table>
+	</article>
+	</ul>
+	
+	<ul>
+	<i>响应：</i>
+	<article>
+	<p>示例：</p>
+	<pre>
+$response
+	</pre>
+	</article>
+	</ul>
+	
+	<ul>
+	<article>
+	<p>字段描述:</p>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <thead>
+	    <td width="20%">字段 </td><td width="20%">类型</td><td width="60%">描述</td>
+	  </thead>
+	  <tr>
+	    <td>result</td><td>int</td><td>结果返回码: 0为成功，其他为失败</td>
+	  </tr><tr>
+	    <td>note</td><td>string</td><td>结果备注信息</td>
+	  </tr>
+	  #foreach($items in $rspDetails)
+	  <tr>
+	  	#foreach($item in $items)
+	    <td>$item</td>
+		#end
+	  </tr>
+	  #end
+	</table>
+	</article>
+	</ul>
+</hgroup>
+#end
+

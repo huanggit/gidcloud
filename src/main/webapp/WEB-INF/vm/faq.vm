@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>FAQ</title>
+	<meta name="keywords" content="FAQ" />
+	<meta name="description" content="FAQ" />
+	#header()
+</head>
+<body>
+#navigator("faq")
+<div class="faqBg clearfix">
+<div class="W990 position-r">
+<ul class="faqIcon">FAQ<i class="faqArrow"></i></ul>
+<dl class="faqContent">
+
+<dt><i>Q</i>什么是Gid Cloud？</dt>
+<dd><i>A</i>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Gid即Global Identification ，是迪纳硬件云对接入硬件的统称。Gid Cloud是硬件的云存储服务平台，为硬件提供网管接入能力，硬件数据存储能力，以及分析计算能力。
+硬件商通过Gid Cloud实现自己产品开放化，软件开发商则可以利用这些开放的服务，研发带智能硬件的软件产品。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Gid Cloud第一期支持的硬件是迪纳科技的汽车OBD产品，该硬件接入Gid Cloud后，Gid Cloud提供了硬件数据的存储，查询服务，统计分析等开放接口，
+第三方开发商可以利用此硬件和开发Api快速开发带有OBD数据特性的GPS车辆管理系统。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 未来我们将支持更多的接入硬件，敬请期待。
+</p>
+</dd>
+
+<dt><i>Q</i>谁可以使用Gid Cloud？</dt>
+<dd><i>A</i>
+<p>
+1、需要为自己硬件提供对外开放能力的硬件商。<br/>
+2、需要在自己的软件项目或者产品上使用某种硬件的开发商。<br/>
+</p>
+</dd>
+
+<dt><i>Q</i>为什么使用Gid Cloud？</dt>
+<dd><i>A</i>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+传统的硬件厂商，往往只负责制造硬件，而缺乏对硬件的服务包装，软件公司需要先与硬件厂商做对接，然后再开发自己的业务系统。
+这个对接层是很多软件开发商重复劳动的地方，硬件厂商的用户受众就只有那些有能力做对接的软件商。<br/>
+而对于软件开发商而言，如果自己的业务系统牵扯到了硬件，摆在自己面前的往往有三个难题：<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1、寻找合适的硬件;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2、开发硬件接入网关;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3、硬件数据存储以及服务能力的建设;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+很多项目在这三项工作上会花费大量的时间和人力投入，而效果往往也不尽人意，各种bug层出不穷，项目的成功性得不到保证，项目后续的运营维护隐形成本过高。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+迪纳科技的Gid Cloud经历过诸多大型项目的考验，经过多年的行业软件洗礼，稳定性和成熟度已达到了相当高的水准。我们深知同行开发商的痛点，
+因此决定做国内的硬件服务的云。我们还提供了一套开源的Demo供软件商参考使用，包括平台接口、web和手机客户端。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Gid Cloud提供的首期服务将解决 GPS和OBD行业产品软件的硬件及数据服务能力问题。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+开发一套车辆管理系统，至少需要一名有多年网络开发经验的工程师，开发2-4个月、调试数月，需要平台开发人员开发数据服务接口数月，
+web前端工程师开发至少2月，有经验的android、ios工程师开发App至少2月。我们会看到投入很大，而且时间周期比较长，质量还不一定有保障，
+很多问题要有一定的用户量才慢慢涌现，开发商慢慢陷入维护系统的痛苦之中。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+选择Gid Cloud可以大大降低开发商开发这种项目的难度和成本。同时也可以降低这个行业的系统建设成本，从而让更多中小型项目得以实施。
+</p>
+</dd>
+
+<dt><i>Q</i>使用Gid Cloud如何解决用户数据隐私问题？</dt>
+<dd><i>A</i>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Gid Cloud的设计是针对硬件的，并不针对用户和业务；Gid Cloud只负责存储每个硬件传送的数据，加以数据分析。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+以现在提供的汽车OBD硬件为例。开发商的业务系统里记录一辆车和一个硬件的对应关系，开发商通过硬件ID查询数据，在自己的业务系统里映射到具体的某辆车。
+数据关系链维护在开发商系统中，客户的隐私是有保障的，而Gid Cloud上看到的只是无数硬件的基础数据，并不知道这个数据是谁的。
+</p>
+</dd>
+
+<dt><i>Q</i>Gid Cloud的使用难吗？</dt>
+<dd><i>A</i>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Gid Cloud虽然不像某些服务SDK可以分分钟就集成起来，但是我们提供了完整的文档，包含源码的Demo工程，可以大大降低开发难度和开发时间。
+</p>
+</dd>
+
+
+
+</dl>
+</div>
+</div>
+#footer()
+</body>
+</html>

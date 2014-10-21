@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Gid Cloud</title>
+	<meta name="keywords" content="Gid Cloud" />
+	<meta name="description" content="Gid Cloud" />
+	#header()
+</head>
+<body>
+#navigator("index")
+<div class="banner clearfix"><a href="#demoDownloadUrl()"><img src="images/slider_1.png" width="980" height="371" border="0" title="点击下载"/></a></div>
+ <div class="mainContent">
+  <ul>
+  <li class="pic1">
+	<img src="images/pic-1.png" width="980" height="350" border="0" usemap="#Map"/>
+	<map name="Map">
+		<area shape="rect" coords="764,64,959,265" href="#a4"/>
+		<area shape="rect" coords="519,65,714,266" href="#a3"/>
+		<area shape="rect" coords="272,65,467,266" href="#a2"/>
+		<area shape="rect" coords="23,66,218,267" href="#a1"/>
+	</map>
+  </li>
+  <li class="pic5"><a name="a1">&nbsp;</a></li>
+  <li class="pic6"><a name="a2">&nbsp;</a></li>
+  <li class="pic2"><a name="a3">&nbsp;</a></li>
+  <li class="pic3"><a name="a4">&nbsp;</a></li>
+  <li class="pic4"></li>
+  </ul>
+</div>
+#footer()
+</body>
+</html>

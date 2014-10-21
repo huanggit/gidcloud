@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"  
+        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"  
+        xmlns:oxm="http://www.springframework.org/schema/oxm"  xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"  
+        xsi:schemaLocation="http://www.springframework.org/schema/mvc  
+                http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd  
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd  
+                http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd  
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  
+                http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
+                http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">  
+
+	<!-- properties files -->
+	<context:property-placeholder location="classpath:/config.properties" />
+	
+	<mvc:annotation-driven />
+	
+	<mybatis:scan base-package="com.cpsdna.gidCloud.web.mapper.**" />
+	<context:component-scan base-package="com.cpsdna.gidCloud.web.controllers" /> 
+	<context:component-scan base-package="com.cpsdna.gidCloud.web.service" />   
+	
+	<mvc:interceptors>
+		<bean class="com.cpsdna.gidCloud.web.interceptors.LoginInterceptor" />
+	</mvc:interceptors>  
+	
+  	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/vm/" />
+		<property name="configLocation" value="/WEB-INF/velocity.properties" />
+	</bean>
+	
+   <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+	   <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityLayoutView" />
+	   <property name="contentType" value="text/html;charset=UTF-8" />
+	   <property name="suffix" value=".vm" />
+	   <property name="layoutUrl" value="common/layout.vm" />
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean" 
+          p:resourceLoaderPath="/WEB-INF/mail-template" 
+          p:preferFileSystemAccess="false"/>
+    <bean id="mailService" class="com.cpsdna.gidCloud.web.service.MailService" > 
+    	<property name="host" value="${mail.host}" />
+		<property name="user" value="${mail.username}" /> 
+		<property name="pwd" value="${mail.password}" /> 
+		<property name="from" value="${mail.from}" /> 
+    </bean>
+    
+	<!-- mybatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+	    <property name="configLocation" value="/WEB-INF/mybatis-config.xml" /> 
+	    <property name="dataSource" ref="jdbcDataSource" />  
+	    <property name="transactionFactory">
+		    <bean class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory" />
+		</property>  
+	</bean>  
+	<bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >    
+        <property name="driverClassName" value="${jdbc.driver.class}" />
+        <property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />  
+    </bean>
+    
+    <!-- redis   -->
+    <bean id="jedisConnFactory"  class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
+		    p:use-pool="true"
+		    p:host-name="${redis.host}"
+		    p:port="${redis.port}"
+		    p:password="${redis.password}"/>
+	<bean id="redisTemplate"  class="org.springframework.data.redis.core.RedisTemplate" 
+		    p:connection-factory-ref="jedisConnFactory"/>
+		    
+    <bean id="cloudapi" class="com.cpsdna.gidCloud.web.service.HttpService" > 
+    	<property name="ip" value="${cloudapi.host}" />
+    </bean>
+    
+    <bean id="bbsService" class="com.fivestars.interfaces.bbs.client.BbsClient" > 
+	    <property name="UC_API" value="${bbs.ip}" />
+	    <property name="UC_KEY" value="${bbs.key}" />
+	    <property name="UC_APPID" value="${bbs.appid}" />
+	    <property name="needSync" value="${bbs.needSync}" />
+	    <property name="home" value="${bbs.home}" />
+    </bean>
+    
+</beans>  

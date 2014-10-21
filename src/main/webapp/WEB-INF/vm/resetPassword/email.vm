@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>找回密码</title>
+<meta name="keywords" content="找回密码" />
+<meta name="description" content="找回密码" />
+#header()
+</head>
+<body>
+<div class="registerTop">
+  <div class="W990">
+    <div class="regLogo"><a href="index.html"><img src="images/reg-logo.png" title="GIDCLOUD" width="154" height="109" border="0"></a></div>
+    <div class="topTitle">找回密码</div>
+  </div>
+</div>
+<div class="wrap">
+<div class="W990">
+<div class="tabBox">
+	
+</div>
+<div class="editContent">
+<ul class="form">
+<li class="label">请输入您注册时使用的邮箱</li>
+<li>
+	<label>我的邮箱：</label>
+	<input type="text" value="" id="email"/>
+</li>
+<li class="label">
+	<a href="javascript:;" onClick="sendResetEmail()" class="btnBlue mr" id="resetPwd">立即找回</a>
+	<a href="login" class="btnOrange f-none">返回登录</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+#footer()
+#commonJs()
+<script type="text/javascript">
+	function sendResetEmail(){
+		AJAX("resetPwd", {
+			"email":  $('#email').val()
+		}, function(data) {
+			if (errorHandlers(data)) return;
+			$("#resetPwd").html("已发送邮件");
+			$("#resetPwd").addClass("btngrey");
+			$("#resetPwd").removeAttr('onClick'); 
+		});
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,1075 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>开发者文档</title>
+	<meta name="keywords" content="开发者文档" />
+	<meta name="description" content="开发者文档" />
+	#header()
+</head>
+<body>
+#navigator("doc")
+<div class="documentBg clearfix">
+<h1>开发者文档</h1>
+<p>快速入门</p>
+</div>
+<section class="section">
+<div class="boxLeft">
+<h3>概述</h3>
+<ul>
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Gid Cloud 提供了简单的Rest api，用户可以使用C#、C++、Java等开发语言发送HTTP请求并接收json的数据。Gid Cloud目前提供了基础数据api和统计api以及少数的高级api，后续我们会不断的完善这些服务。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+由于Gid Cloud是针对硬件产生数据的管理服务，因此，我们只提供和硬件数据相关的api服务。
+开发者在利用Gid Cloud开发自己的业务系统时，需要自己管理车辆数据表，以及车辆和硬件设备的映射关系，开发者需要将查询一辆车的数据通过自己的映射，转化为查询一个对应设备的数据，这么做对用户来讲是有数据隐私保护性的。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+为了让开发者更好的理解于如何使用这些api开发车辆管理系统，我们提供了一个完整的demo工程，包含后台服务、web、以及ios和android的手机客户端，注册开发者账号后即可下载。
+</li>
+</ul>
+
+
+#docTerm( "initDevice" "初始化设备" "当一辆车安装一个OBD设备后，需要对该设备设置车辆的排量用于计算汽车油耗。（注：如果不对设备做此设置，会导致油耗计算不准确）" 
+'  {
+    "cmd" : "initDevice",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "engineDisplacement" : "1.6"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["engineDisplacement","string","设备车辆排量，数值范围[0.1,25.5]/[0.1T,25.5T] (例： 2.0 1.4T)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )
+
+
+
+#docTerm( "getDevicesByUserId" "查询开发者账号下所有设备的设备号" "获取开发者账号所拥有的所有设备的设备号。（注：开发者需要在自己的平台中设计车辆和硬件的数据对应关系，此接口用于开发者获取设备号）" 
+'  {
+    "cmd" : "getDevicesByUserId",
+    "userId" : "40200000481a87b11fa81a87c1d40000"
+  }'
+[] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [ "2000000001", "2000000002"]
+  }'
+[
+	["dataList","list","设备ID列表"]
+] )
+
+
+
+#docTerm( "getGroupsByUserId" "获取开发者账号下所创建的设备分组" 
+"为了方便开发者查询多个设备时，参数过于繁琐，我们设计了设备分组的功能，开发者可以对设备创建分组，通过组ID来查询多设备的信息。（注：一般车辆管理业务系统中，可能会将部门的设计和这个分组对应）" 
+'  {
+    "cmd" : "getGroupsByUserId",
+    "userId" : "40200000481a87b11fa81a87c1d40000"
+  }'
+[] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [ "4771000000001", "4771000000002"]
+  }'
+[
+	["dataList","list","设备分组ID列表"]
+] )
+
+
+
+#docTerm( "getDevicesByGroupId" "获得设备组中的设备" "获取用户创建的设备组中的设备集合。" 
+'  {
+    "cmd" : "getDevicesByGroupId",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "34239480cc8766a0099dd42525ba00320"
+  }'
+[
+	["groupId","string","设备组ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : ["2000000001", "2000000002"]
+  }'
+[
+	["dataList","list","设备组中的设备列表"]
+] )
+
+
+
+#docTerm( "addDeviceGroup" "创建设备组" "创建一个设备组。" 
+'  {
+    "cmd" : "addDeviceGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupName" : "张三的设备组",
+    "remark" : "张三的未来车队，直属北京管理"
+  }'
+[
+	["groupName","string","设备组名称（最长32字符）"],
+	["remark","string","备注（最长256字符）"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "groupId" : "34239480cc8766a0099dd42525ba00320"
+  }'
+[
+	["groupId","string","创建的设备组ID"]
+] )
+
+
+
+#docTerm( "modDeviceGroup" "修改设备组" "修改设备组的信息。" 
+'  {
+    "cmd" : "modDeviceGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "34239480cc8766a0099dd42525ba00320",
+    "groupName" : "张三的设备组",
+    "remark" : "张三的未来车队，直属北京管理"
+  }'
+[
+	["groupId","string","设备组ID"],
+	["groupName","string","设备组名称（最长32字符）"],
+	["remark","string","备注（最长256字符）"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )
+			
+			
+				
+#docTerm( "delDeviceGroup" "删除设备组" "删除设备分组信息。" 
+'  {
+    "cmd" : "delDeviceGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "34239480cc8766a0099dd42525ba00320"
+  }'
+[
+	["groupId","string","设备组ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )
+
+
+
+#docTerm( "addDevicesToGroup" "向设备组添加设备" "向一个指定的设备组中添加指定的设备。" 
+'  {
+    "cmd" : "addDevicesToGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "34239480cc8766a0099dd42525ba00320",
+    "deviceIdList" : ["2000000001", "2000000002"]
+  }'
+[
+	["groupId","string","设备组ID"],
+	["deviceIdList","list","添加设备列表"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )			
+
+
+
+#docTerm( "delDevicesFromGroup" "从设备组删除设备" "从指定的设备组中删除指定的设备。" 
+'  {
+    "cmd" : "delDevicesFromGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "34239480cc8766a0099dd42525ba00320",
+    "deviceIdList" : ["2000000001", "2000000002"]
+  }'
+[
+	["groupId","string","设备组ID"],
+	["deviceIdList","list","删除设备列表"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )	
+
+
+
+#docTerm( "deviceLocation" "查询一个设备当前位置" "查询设备的当前位置信息，一般用于在地图上实时显示车辆当前位置时使用。" 
+'  {
+    "cmd" : "deviceLocation",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001"
+  }'
+[
+	["deviceId","string","设备ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "longitude" : 85.84435,
+    "latitude" : 65.36987,
+    "onlineStatus" : 2,
+    "speed" : 80.0,
+    "direction" : 23
+  } '
+[
+	["longitude","double","定位的经度"],
+	["latitude","double","定位的纬度"],
+	["onlineStatus","int","0：离线; 1：在线静止; 2：在线且运行"],
+	["speed","double","当前速度 （km/h） -1为未知"],
+	["direction","int","移动的方位角度 0-360 -1代表未知"]
+] )
+
+
+
+#docTerm( "groupLocation" "查询一组设备当前位置信息" "用组ID来查询一组设备的当前位置，而不是传很多的设备号做参数。" 
+'  {
+    "cmd" : "groupLocation",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "34239480cc8766a0099dd42525ba00320"
+  }'
+[
+	["groupId","string","设备组ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	    {
+		    "deviceId" : "2000000001",
+		    "longitude" : 85.84435,
+		    "latitude" : 65.36987,
+		    "onlineStatus" : 2,
+		    "speed" : 80.0,
+		    "direction" : 23
+	    }
+	]
+  } '
+[
+	["dataList","list","设备列表"],
+	["deviceId","string","设备ID"],
+	["longitude","double","定位的经度"],
+	["latitude","double","定位的纬度"],
+	["onlineStatus","int","0：离线; 1：在线静止; 2：在线且运行"],
+	["speed","double","当前速度 （km/h） -1为未知"],
+	["direction","int","移动的方位角度 0-360 -1代表未知"]
+] )
+
+
+
+#docTerm( "drivingHistoryByDay" "查询一个设备一天内行车记录" 
+"查询一个设备所在车辆一天中的行车记录信息，平台会根据OBD设备检测到的车辆行驶状态自动分段（每次车辆启动、停止即一个分段），
+该接口返回一天之内的所有分段，以及每个分段的信息。每个分段信息包括：起点和终点的地址、坐标和时间，一段驾驶的里程数、驾驶时间、耗油量、三急次数。" 
+'  {
+    "cmd" : "drivingHistoryByDay",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "day" : "2014-06-12"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["day","string","天 (yyyy-MM-dd)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+	"metaData" : ["startAddr","startLon","startLat","startTime",
+				  "endAddr","endLon","endLat","endTime",
+				  "fuel","mile","runDuration","hAccelerateTimes",
+				  "hDecelerateTimes","hSwerveTimes"],
+    "dataList" : [
+		["南京市秦淮区中山南路414号",32.028668,118.787547,"2013-12-09 03:12:00",
+		 "南京市白下区新街口汉中路1号",32.047033,118.789196,"2013-12-09 05:23:00",
+		 520,3300,10,4,5,6]
+    ]
+  } '
+[
+	["metadata","list","数据字段名称,dataList顺序与metaData一致"],
+	["dataList","list","数据列表"],
+	["startAddr","string","分段开始地址"],
+	["startLon","double","分段开始经度"],
+	["startLat","double","分段开始纬度"],
+	["startTime","string","分段开始时间"],
+	["endAddr","string","分段结束地址"],
+	["endLon","double","分段结束经度"],
+	["endLat","double","分段结束纬度"],
+	["endTime","string","分段结束时间"],
+	["fuel","int","耗油量（单位: ml）"],
+	["mile","int","行驶里程 （单位: 米）"],
+	["runDuration","int","行驶时长（单位: 秒）"],
+	["hAccelerateTimes","int","急加速次数"],
+	["hDecelerateTimes","int","急减速次数"],
+	["hSwerveTimes","int","急转弯次数"]
+] )
+
+
+
+#docTerm( "parkingHistoryByDay" "查询一个设备一天内停车记录" 
+"查询一个设备所在车辆一天中的停车信息，包括：停车地点的地址，经纬度，停车的开始时间、结束时间和停车的时间长度。" 
+'  {
+    "cmd" : "parkingHistoryByDay",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "day" : "2014-06-12"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["day","string","天 (yyyy-MM-dd)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+	"dataList" : [
+		 {
+			 "endLocation":"江苏省南京市秦淮区中山南路414号",
+			 "beginTime ":"2014-07-24 11:15:14",
+			 "endTime ":"2014-07-24 16:18:14",
+			 "duration":"5小时3分钟",
+			 "longitude": 113.930283,
+			 "latitude": 22.548708
+		 }
+	 ]
+  } '
+[
+	["dataList","list","设备列表"],
+	["endLocation","string","停靠地点"],
+	["beginTime","string","停靠该地的时刻 (yyyy-MM-dd HH:mm:ss)"],
+	["endTime","string","离开该地的时刻 (yyyy-MM-dd HH:mm:ss)"],
+	["duration","string","停靠的时间长度 (单位:天，小时，分钟)"],
+	["longitude","double","经度"],
+	["latitude","double","纬度"]
+] )
+
+
+
+#docTerm( "getDevicesInArea" "查询区域范围内的设备当前位置信息" 
+"查询一个矩形区域内的设备状态，通过矩形区域左下角和右上角的经纬度为参数，返回该矩形内所在所有设备的当前位置信息。（注：一般用于在地图上查询地图所显示区域内的车辆）" 
+'  {
+    "cmd" : "getDevicesInArea",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "3000000001",
+    "leftBottomX" : 22.548708,
+    "leftBottomY" : 12.244706,
+    "rightTopX" : 73.930283,
+    "rightTopY" : 132.770284
+  }'
+[
+	["groupId","string","设备组ID"],
+	["leftBottomX","double","区域左下顶点纬度"],
+	["leftBottomY","double","区域左下顶点经度"],
+	["rightTopX","double","区域右上顶点纬度"],
+	["rightTopY","double","区域右上顶点经度"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+    "dataList" : [
+    	{
+    		"speed": 45.0,
+    		"direction": 0.1,
+    		"longitude": 85.84435,
+    		"latitude": 35.82591,
+    		"onlineStatus": 0,
+    		"deviceId": "2000000001"
+    	}
+    ]
+  }'
+[
+	["dataList","list","在区域内的设备列表"],
+	["longitude","double","经度"],
+	["latitude","double","纬度"],
+	["speed","double","速度 (单位: km/h)"],
+	["direction","double","方向 (单位: 度)"],
+	["deviceId","string","设备ID"],
+	["onlineStatus","int","设备在线状态 (0: 离线; 1: 在线静止; 2: 在线运行)"]
+] )
+
+
+
+#docTerm( "historyTrack" "查询设备指定时间的历史轨迹" "查询设备指定时间段的gps轨迹（注：时间段不超过24小时）" 
+'  {
+    "cmd" : "historyTrack",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "beginTime" : "2012-10-18 00:02:46",
+    "endTime" : "2012-10-18 00:03:49"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["beginTime","string","查询开始时间 (yyyy-MM-dd HH:mm:ss)"],
+	["endTime","string","查询结束时间 (yyyy-MM-dd HH:mm:ss)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "metadata" : ["longitude","latitude","speed","direction","time"]
+    "pointdata" : [
+		[118.893709, 31.757633, 95.0, 33.2, "2012-10-18 00:02:46"],
+		[118.89332, 31.758261, 94.5, 33.1, "2012-10-18 00:02:49"]
+    ]
+  } '
+[
+	["metadata","list","数据字段名称"],
+	["pointdata","list","数据列表"],
+	["longitude","double","经度"],
+	["latitude","double","纬度"],
+	["speed","double","速度 (单位: km/h)"],
+	["direction","double","方向 (单位: 度)"],
+	["time","string","时刻 (yyyy-MM-dd HH:mm:ss)"]
+] )
+
+
+
+#docTerm( "totalMiles" "统计一个设备记录的总里程" "统计一个设备记录的总里程（注：从安装设备后记录的里程数）" 
+'  {
+    "cmd" : "totalMiles",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001"
+  }'
+[
+	["deviceId","string","设备ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "mile" : 43500
+  }'
+[
+	["mile","int","行驶里程 (单位: m)"]
+] )
+
+
+
+#docTerm( "dayMiles" "统计一个设备某天记录的总里程" "统计一个设备指定天记录的总里程" 
+'  {
+    "cmd" : "dayMiles",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "day" : "2014-03-04"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["day","string","天 (yyyy-MM-dd)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "mile" : 88
+  }'
+[
+	["mile","int","行驶里程 (单位: m)"]
+] )
+
+
+
+#docTerm( "monthMiles" "统计一个设备某月记录的总里程" "统计一个设备指定月份记录的总里程数" 
+'  {
+    "cmd" : "monthMiles",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "month" : "2014-09"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["month","string","月 (yyyy-MM)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "mile" : 88
+  }'
+[
+	["mile","int","行驶里程 (单位: m)"]
+] )
+
+
+
+#docTerm( "totalFuel" "统计一个设备记录的总耗油量" "统计一个设备记录的总耗油量" 
+'  {
+    "cmd" : "totalFuel",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001"
+  }'
+[
+	["deviceId","string","设备ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "fuel" : 4350
+    
+  }'
+[
+	["fuel","int","耗油量 (单位: ml)"]
+] )
+
+
+
+#docTerm( "dayFuel" "统计一个设备某天记录的总油耗量" "统计一个设备指定天记录的总耗油量" 
+'  {
+    "cmd" : "dayFuel",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "day" : "2014-03-04"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["day","string","天 (yyyy-MM-dd)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "fuel" : 15
+    
+  }'
+[
+	["fuel","int","耗油量 (单位: ml)"]
+] )
+
+
+
+#docTerm( "monthFuel" "统计一个设备某月记录的总耗油量" "统计一个设备指定月份记录的总耗油量" 
+'  {
+    "cmd" : "monthFuel",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "month" : "2014-09"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["month","string","月 (yyyy-MM)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "fuel" : 85
+    
+  }'
+[
+	["fuel","int","耗油量 (单位: ml)"]
+] )
+
+
+#docTerm( "totalMilesByGroup" "统计一组设备记录的总里程" "统计一组设备记录的总里程集合" 
+'  {
+    "cmd" : "totalMilesByGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "488882000000001"
+  }'
+[
+	["groupId","string","设备组ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	    {
+	    	"deviceId" : "2000000001",
+	    	"mile" : 43500
+	    }
+    ]
+  }'
+[
+	["dataList","list","设备列表"],
+	["deviceId","string","设备ID"],
+	["mile","int","行驶里程 (单位: m)"]
+] )
+
+
+
+#docTerm( "dayMilesByGroup" "统计一组设备某天记录的里程" "统计一组设备指定天记录的总里程集合" 
+'  {
+    "cmd" : "dayMilesByGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "488882000000001",
+    "day" : "2014-03-04"
+  }'
+[
+	["groupId","string","设备组ID"],
+	["day","string","天 (yyyy-MM-dd)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	    {
+	    	"deviceId" : "2000000001",
+	    	"mile" : 43500
+	    }
+    ]
+  }'
+[
+	["dataList","list","设备列表"],
+	["deviceId","string","设备ID"],
+	["mile","int","行驶里程 (单位: m)"]
+] )
+
+
+
+#docTerm( "monthMilesByGroup" "统计一组设备某月记录的里程" "统计一组设备指定月份记录的总里程集合" 
+'  {
+    "cmd" : "monthMilesByGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "488882000000001",
+    "month" : "2014-09"
+  }'
+[
+	["groupId","string","设备组ID"],
+	["month","string","月 (yyyy-MM)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	    {
+	    	"deviceId" : "2000000001",
+	    	"mile" : 43500
+	    }
+    ]
+  }'
+[
+	["dataList","list","设备列表"],
+	["deviceId","string","设备ID"],
+	["mile","int","行驶里程 (单位: m)"]
+] )
+
+
+
+#docTerm( "totalFuelByGroup" "统计一组设备记录的总耗油量" "统计一组设备记录的总耗油量集合" 
+'  {
+    "cmd" : "totalFuelByGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "488882000000001"
+  }'
+[
+	["groupId","string","设备组ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	    {
+	    	"deviceId" : "2000000001",
+	    	"fuel" : 15001
+	    }
+    ]
+  }'
+[
+	["dataList","list","设备列表"],
+	["deviceId","string","设备ID"],
+	["fuel","int","耗油量 (单位: ml)"]
+] )
+
+
+
+#docTerm( "dayFuelByGroup" "统计一组设备某天记录的耗油量" "统计一组设备指定指定天记录的总耗油量集合" 
+'  {
+    "cmd" : "dayFuelByGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "488882000000001",
+    "day" : "2014-03-04"
+  }'
+[
+	["groupId","string","设备组ID"],
+	["day","string","天 (yyyy-MM-dd)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	    {
+	    	"deviceId" : "2000000001",
+	    	"fuel" : 150
+	    }
+    ]
+  }'
+[
+	["dataList","list","设备列表"],
+	["deviceId","string","设备ID"],
+	["fuel","int","耗油量 (单位: ml)"]
+] )
+
+
+
+#docTerm( "monthFuelByGroup" "统计一组设备某月记录的耗油量" "统计一组设备指定指定月份记录的总耗油量集合" 
+'  {
+    "cmd" : "monthFuelByGroup",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "groupId" : "488882000000001",
+    "month" : "2014-09"
+  }'
+[
+	["groupId","string","设备组ID"],
+	["month","string","月 (yyyy-MM)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	    {
+	    	"deviceId" : "2000000001",
+	    	"fuel" : 1500
+	    }
+    ]
+  }'
+[
+	["dataList","list","设备列表"],
+	["deviceId","string","设备ID"],
+	["fuel","int","耗油量 (单位: ml)"]
+] )
+
+
+
+#docTerm( "getDriveInfoCycle" "统计一个设备某月每天行车记录集合" "统计一个设备指定月份中每天的行车记录集合" 
+'  {
+    "cmd" : "getDriveInfoCycle",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "month" : "2012-10"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["month","string","月份 (yyyy-MM)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+	{
+		"time": "2013-12-02", 
+		"fuel": 12.9, 
+		"mile": 100.9, 
+		"runDuration": 100343, 
+		"hAccelerateTimes": 1, 
+		"hDecelerateTimes": 2, 
+		"hSwerveTimes": 3
+	}
+    ]
+  }'
+[
+	["dataList","list","周期统计列表"],
+	["time","string","统计时间"],
+	["fuel","int","耗油量 (单位: ml)"],
+	["mile","int","行驶里程 (单位: m)"],
+	["runDuration","int","行驶时长（单位: 秒）"],
+	["hAccelerateTimes","int","急加速次数"],
+	["hDecelerateTimes","int","急减速次数"],
+	["hSwerveTimes","int","急转弯次数"]
+] )
+
+
+
+#docTerm( "inspectionInfo" "查询车辆故障信息" "查询一个设备某天记录的车辆故障码信息" 
+'  {
+    "cmd" : "inspectionInfo",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "time": "2014-08-22"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["time","string","日期,精确到天 (yyyy-MM-dd)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "dataList" : [
+    	{
+    		"time" : "2014-08-22 22:41:26",
+    		"detectInfo" : [
+				"troubleCode":"1000",
+				"faultType": "发动机系统",
+				"troubleDesc":"发动机故障"
+    		]
+    	}
+    ]
+  }'
+[
+	["dataList","list","故障列表"],
+	["time","string","故障时间  (yyyy-MM-dd HH:mm:ss)"],
+	["troubleCode","string","故障码"],
+	["faultType","string","故障类型"],
+	["troubleDesc","string","故障描述"]
+] )
+
+
+
+#docTerm( "miles" "查询设备指定时间的里程" "查询一个设备指定时间段内记录的里程数" 
+'  {
+    "cmd" : "miles",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "beginTime" : "2012-10-18 00:02:46",
+    "endTime" : "2012-10-18 00:03:49"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["beginTime","string","查询开始时间 (yyyy-MM-dd HH:mm:ss)"],
+	["endTime","string","查询结束时间 (yyyy-MM-dd HH:mm:ss)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "mile" : 88
+  }'
+[
+	["mile","int","行驶里程 (单位: m)"]
+] )
+
+
+
+#docTerm( "fuelConsumption" "查询设备指定时间的油耗量" "查询一个设备指定时间段内记录的耗油量" 
+'  {
+    "cmd" : "fuelConsumption",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "deviceId" : "2000000001",
+    "beginTime" : "2012-10-18 00:02:46",
+    "endTime" : "2012-10-18 00:03:49"
+  }'
+[
+	["deviceId","string","设备ID"],
+	["beginTime","string","查询开始时间 (yyyy-MM-dd HH:mm:ss)"],
+	["endTime","string","查询结束时间 (yyyy-MM-dd HH:mm:ss)"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "fuel" : 88
+  }'
+[
+	["fuel","int","耗油量 (单位: ml)"]
+] )
+
+
+<!--
+#docTerm( "addEfenceCircle" "创建圆形电子栅栏" "" 
+'  {
+    "cmd" : "addEfenceCircle",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "name" : "张三的电子栅栏",
+    "radius" : 1000.3,
+    "centreX" : 34.65,
+    "centreY" : 123.89
+  }'
+[
+	["name","string","电子栅栏名称"],
+	["radius","double","半径 (单位: 米)"],
+	["centreX","double","圆点经度"],
+	["centreY","double","圆点纬度"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "efenceId", "aaa00bb0481a87b11fa81a87c1d43322"
+  }'
+[
+	["efenceId","string","新创建的电子栅栏的ID"]
+] )
+
+
+
+#docTerm( "updateEfenceCircle" "更新圆形电子栅栏" "" 
+'  {
+    "cmd" : "updateEfenceCircle",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "efenceId" : "aaa00bb0481a87b11fa81a87c1d43322",
+    "name" : "张三的电子栅栏",
+    "radius" : 1000.3,
+    "centreX" : 34.65,
+    "centreY" : 123.89
+  }'
+[
+	["name","string","电子栅栏名称"],
+	["radius","double","半径 (单位: 米)"],
+	["centreX","double","圆点经度"],
+	["centreY","double","圆点纬度"],
+	["efenceId","string","电子栅栏的ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )
+
+
+
+#docTerm( "queryEfenceCircleById" "根据主键查询圆形区域" "" 
+'  {
+    "cmd" : "queryEfenceCircleById",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "efenceId" : "aaa00bb0481a87b11fa81a87c1d43322"
+  }'
+[
+	["efenceId","string","电子栅栏的ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "name" : "张三的电子栅栏",
+    "radius" : 1000.3,
+    "centreX" : 34.65,
+    "centreY" : 123.89
+  }'
+[
+	["name","string","电子栅栏名称"],
+	["radius","double","半径 (单位: 米)"],
+	["centreX","double","圆点经度"],
+	["centreY","double","圆点纬度"]
+] )
+
+
+
+#docTerm( "addEfencePolygon" "创建多边形电子栅栏" "" 
+'  {
+    "cmd" : "addEfencePolygon",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "name" : "张三的电子栅栏",
+    "pointsList" : ["118.1 32.2","118.11 32.21","117.1 33.01","118.1 32.2"]
+  }'
+[
+	["name","string","电子栅栏名称"],
+	["pointsList","list","任意首尾相连的多边形区域(首尾2个点一样),多个顶点组成的list，每个顶点经纬度之间用空格分割"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "efenceId", "aaa00bb0481a87b11fa81a87c1d43322"
+  }'
+[
+	["efenceId","string","新创建的电子栅栏的ID"]
+] )
+
+
+
+#docTerm( "updateEfencePolygon" "更新多边形电子栅栏" "" 
+'  {
+    "cmd" : "updateEfencePolygon",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "efenceId" : "aaa00bb0481a87b11fa81a87c1d43322",
+    "name" : "张三的电子栅栏",
+    "pointsList" : ["118.1 32.2","118.11 32.21","117.1 33.01","118.1 32.2"]
+  }'
+[
+	["efenceId","string","电子栅栏的ID"],
+	["name","string","电子栅栏名称"],
+	["pointsList","list","任意首尾相连的多边形区域(首尾2个点一样),多个顶点组成的list，每个顶点经纬度之间用空格分割"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )
+
+
+
+#docTerm( "queryEfencePolygonById" "根据主键查询多边形区域" "" 
+'  {
+    "cmd" : "queryEfencePolygonById",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "efenceId" : "aaa00bb0481a87b11fa81a87c1d43322"
+  }'
+[
+	["efenceId","string","电子栅栏的ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS",
+    "name" : "张三的电子栅栏",
+    "pointsList" : ["118.1 32.2","118.11 32.21","117.1 33.01","118.1 32.2"]
+  }'
+[
+	["name","string","电子栅栏名称"],
+	["pointsList","list","任意首尾相连的多边形区域(首尾2个点一样),多个顶点组成的list，每个顶点经纬度之间用空格分割"]
+] )
+
+
+
+#docTerm( "deleteEfence" "删除电子栅栏" "" 
+'  {
+    "cmd" : "deleteEfence",
+    "userId" : "40200000481a87b11fa81a87c1d40000",
+    "efenceId" : "aaa00bb0481a87b11fa81a87c1d43322"
+  }'
+[
+	["efenceId","string","电子栅栏的ID"]
+] 
+'  {
+    "result" : 0,
+    "note" : "SUCCESS"
+  }'
+[] )
+
+-->
+
+
+
+</div>
+<div class="boxRight">
+	<h3>目录</h3>
+	<ul>
+		<li class="mt"><span>基础API</span>
+		<ul>
+			<li><a href="#initDevice">初始化设备</a></li>
+			<li><a href="#getDevicesByUserId">查询开发者账号下所有设备的设备号</a></li>	
+			<li><a href="#getGroupsByUserId">获取开发者账号下所创建的设备分组</a></li>	
+			<li><a href="#getDevicesByGroupId">获得设备组中的设备</a></li>	
+			<li><a href="#addDeviceGroup">创建设备组</a></li>			
+			<li><a href="#modDeviceGroup">修改设备组</a></li>	
+			<li><a href="#delDeviceGroup">删除设备组</a></li>			
+			<li><a href="#addDevicesToGroup">设备组添加设备</a></li>	
+			<li><a href="#delDevicesFromGroup">设备组删除设备</a></li>	
+			<li><a href="#deviceLocation">查询一个设备当前位置</a></li>
+			<li><a href="#groupLocation">查询一组设备当前位置信息</a></li>
+			<li><a href="#drivingHistoryByDay">查询一个设备一天内行车记录</a></li>
+			<li><a href="#parkingHistoryByDay">查询一个设备一天内停车记录</a></li>
+			<li><a href="#getDevicesInArea">查询区域范围内的设备当前位置信息</a></li>
+			<li><a href="#historyTrack">查询一个设备指定时间的轨迹</a></li>
+		</ul>
+		</li>
+		<li class="mt"><span>统计 API</span>
+		<ul style="display:none">
+			<li><a href="#totalMiles">统计一个设备记录的总里程</a></li>
+			<li><a href="#dayMiles">统计一个设备某天记录的总里程</a></li>
+			<li><a href="#monthMiles">统计一个设备某月记录的总里程</a></li>
+			<li><a href="#totalFuel">统计一个设备记录的总耗油量</a></li>
+			<li><a href="#dayFuel">统计一个设备某天记录的总油耗量</a></li>
+			<li><a href="#monthFuel">统计一个设备某月记录的总耗油量</a></li>
+			<li><a href="#totalMilesByGroup">统计一组设备记录的总里程</a></li>
+			<li><a href="#dayMilesByGroup">统计一组设备某天记录的里程</a></li>
+			<li><a href="#monthMilesByGroup">统计一组设备某月记录的里程</a></li>
+			<li><a href="#totalFuelByGroup">统计一组设备记录的总耗油量</a></li>
+			<li><a href="#dayFuelByGroup">统计一组设备某天记录的耗油量</a></li>
+			<li><a href="#monthFuelByGroup">统计一组设备某月记录的耗油量</a></li>
+			<li><a href="#getDriveInfoCycle">统计一个设备某月每天行车记录集合</a></li>	
+		</ul>
+		</li>
+		<li class="mt"><span>高级API</span>
+		<ul style="display:none">
+			<li><a href="#inspectionInfo">设备故障信息</a></li>
+			<li><a href="#miles">设备指定时间的里程</a></li>
+			<li><a href="#fuelConsumption">设备指定时间的油耗量</a></li>	
+			<!--
+			<li><a href="#addEfenceCircle">创建圆形电子栅栏</a></li>
+			<li><a href="#updateEfenceCircle">更新圆形电子栅栏</a></li>
+			<li><a href="#queryEfenceCircleById">根据主键查询圆形区域</a></li>			
+			<li><a href="#addEfencePolygon">创建多边形电子栅栏</a></li>			
+			<li><a href="#updateEfencePolygon">更新多边形电子栅栏</a></li>
+			<li><a href="#queryEfencePolygonById">根据主键查询多边形区域</a></li>
+			<li><a href="#deleteEfence">删除电子栅栏</a></li>	
+			-->		
+		</ul>
+		</li>
+	</ul>
+</div>
+</section>
+#footer()
+#commonJs()
+<script type="text/javascript" src="js/page/doc.js" ></script>
+</body>
+</html>

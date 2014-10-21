@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>服务协议</title>
+<meta name="keywords" content="服务协议" />
+<meta name="description" content="服务协议" />
+#header()
+</head>
+<body>
+<div class="registerTop">
+  <div class="W990">
+    <div class="regLogo"><a href="index"><img src="images/reg-logo.png" title="GIDCLOUD" width="154" height="109" border="0"></a></div>
+    <div class="topTitle">服务协议</div>
+  </div>
+</div>
+<div class="wrap">
+<div class="W990">
+<div class="protocol">
+<h3>《GIDCLOUD服务协议》</h3>
+<div class="text">
+<p>最终解释权归本公司所有</p>
+<p><br />GIDCLOUD云平台</p>
+</div>
+<h3><a href="javascript:;" onclick="javascript:window.opener=null;window.open('','_self');window.close();" class="btnGreenLonger">我已阅读并关闭</a></h3>
+</div>
+</div>
+</div>
+#footer()
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>注册</title>
+	<meta name="keywords" content="注册" />
+	<meta name="description" content="注册" />
+	#header()
+</head>
+<body>
+<div class="registerTop">
+  <div class="W990">
+    <div class="regLogo"><a href="index.html"><img src="images/reg-logo.png" title="GIDCLOUD" width="154" height="109" border="0"></a></div>
+    <div class="topTitle">新用户注册</div>
+  </div>
+</div>
+<div class="wrap">
+<div class="W990">
+  <div class="greyBox">
+    <div class="greyLine"></div>
+    <dl class="p-first">
+      <dt>填写注册信息</dt>
+      <dd><i>1</i></dd>
+    </dl>
+    <dl class="p-third current">
+      <dt>验证邮箱信息</dt>
+      <dd><i>2</i></dd>
+    </dl>
+  </div>
+  <div id="main">
+  	<p class='regFail'>对不起，您的邮箱验证失败。</p>
+  </div>
+</div>
+</div>
+#footer()
+#commonJs()
+</body>
+</html>

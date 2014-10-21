@@ -1,0 +1,204 @@
+@charset "utf-8";
+.wrap{overflow:hidden}
+/* LOGIN */
+.global-bg{background: url(../images/loginBg.jpg) top center no-repeat}
+.W990{ width:990px; margin:0 auto}
+.login{ width:980px; padding-top:153px; overflow:hidden; margin:0 auto 20px}
+.loginContent{ margin:0 auto;width:460px}
+.loginContentBlue{position:relative; width:460px; position:relative; height:90px; line-height:78px; color:#fff; font-size:22px; background:#039ee6; border-radius:5px 5px 0 0;}
+.loginContentBlueTitle{ position:absolute; background:url(../images/login-pic.png) no-repeat; width:357px; height:174px; top:-110px; left:54px}
+.loginContentGrey{ height:296px; padding:15px 72px 18px; overflow:hidden; border:1px solid #c9c9c9; filter:alpha(opacity=80%);opacity:0.8; border-top:0; background:#fff; border-radius:0 0 5px 5px; position:relative}
+.loginContentGrey li{ margin-top:20px; height:41px; line-height:41px; position:relative; overflow:hidden}
+.loginContentGrey li cite{ position:absolute; left:12px; top:0; color:#b0b0b0; font-size:14px}
+.login input{ width:296px; padding-left:12px; height:37px; line-height:37px; border:1px solid #ccc; border-radius:4px; float:left; background:none; position:absolute; font-size:14px}
+.login input.username{ background:url(../images/G-sprite.png) 280px 11px no-repeat}
+.login input.password{ background:url(../images/G-sprite.png) 280px -40px no-repeat}
+.login input.validate{ width:137px;}
+.validate-pic{ position:absolute; left:162px; top:1px;width:74px; padding:1px 0; height:37px; overflow:hidden; text-align:center}
+.login input.checkbox,.registerForm input.checkbox{ height:12px; width:12px; position:relative; margin:0 2px 2px 0; border:none; float:none}
+.login input.username:focus,.login input.password:focus,.login input.validate:focus,.registerForm input[type="text"]:focus{box-shadow:0 0px 1px #1ba6f5 inset; border:1px solid #6ebeec}
+.login input.btnGreenLong,.btnGreenLonger,.login input.btnBlueLong{ width:235px; display:inline-block; border-radius:5px; background:#5cb85c; height:38px; line-height:38px; text-align:center; font-size:16px; color:#fff; border:0; cursor:pointer}
+.login input.btnBlueLong{ width:312px; background:#039EE6; font-weight:bold}
+.login input.btnBlueLong:hover{color:#fff; text-decoration:none; background:#47b4e8}
+.btnGreenLonger{ width:380px}
+.btngreyLonger{ cursor:default; background:#ccc}
+.login input.btnGreenLong:hover,.btnGreenLonger:hover{ color:#fff; text-decoration:none; background:#60bf60}
+.btngreyLonger:hover{ background:#ccc}
+.validateResault{ position:absolute; left:40px; top:280px; color:#f00}
+
+/* REGISTER */
+.registerTop{ width:100%; height:109px; background:url(../images/index-top.png) center center no-repeat; overflow:hidden;}
+.regLogo{ width:154px; height:109px; float:left; overflow:hidden}
+.topTitle{ height:37px; padding-left:10px; border-left:1px solid #fff; line-height:37px; overflow:hidden; color:#fff; font-size:18px; margin-top:46px; float:left}
+.greyBox{ width:988px; height:103px; background:#f8f8f8; border:1px solid #e8e8e8; margin:25px 0; overflow:hidden; position:relative}
+.greyLine{ height:9px; width:542px; position:absolute; left:223px; top:64px; background:#dbdbdb}
+.greyBox dl{ position:absolute; width:110px; height:70px; top:22px}
+.greyBox dl i{ background:#dbdbdb}
+.greyBox dl.current i{ background:#00b5f8}
+.greyBox dl.current dt{color:#408cca}
+.p-first{ left:164px;}
+.p-first dt,.p-second dt,.p-third dt{ font-size:14px; color:#666; font-weight:bold; text-align:center}
+.p-first dd,.p-second dd,.p-third dd{ text-align:center; height:55px;}
+.p-first dd i,.p-second dd i,.p-third dd i{ width:32px; height:32px; line-height:30px; border-radius:20px;border:4px solid #dbdbdb; text-align:center; color:#fff; font-size:18px; font-weight:bold; margin-top:8px}
+.p-second{ left:449px}
+.p-third{ left:700px}
+.registerForm{ margin-left:310px; overflow:hidden}
+.registerForm input{width:365px; padding-left:12px; height:37px; line-height:37px; border:1px solid #ccc; border-radius:4px; float:left; background:none;font-size:14px; margin-right:5px}
+.registerForm li{ margin-bottom:15px; overflow:hidden}
+.registerForm li span{ color:#f00; line-height:37px}
+.registerForm input.validatecode{ width:278px;}
+.registerForm li img{width:74px; padding:1px 0; height:37px; overflow:hidden; text-align:center}
+.regSuccess,.regFail{ text-align:center; font-size:16px; font-weight:bold; color:#009707; height:308px}
+.regFail{ color:#999}
+
+/*INDEX */
+.indexTop{ height:109px; width:100%; background:url(../images/index-top.png) center center no-repeat; overflow:hidden; margin:0 auto}
+.indexLogo{ width:138px; height:83px; float:left; overflow:hidden; margin:0 120px 0 0;}
+.nav{ margin-top:41px; float:left; overflow:hidden;}
+.nav a{ color:#fff; font-size:16px; font-weight:bold; display:inline-block; float:left; padding:3px 20px; height:30px; line-height:30px; margin-right:20px;}
+.nav a.download{ color:#fff; background:#ffc000;border-radius:20px;}
+.nav a:hover.download{ color:#fff; background:#ffa000;border-radius:20px;}
+.nav a:hover,.nav a.current{ color:#2fbfff; background:#fff; border-radius:20px;text-decoration:none}
+.nav a.buy{ color:#fff; background:#00addc;border-radius:20px;}
+.nav a:hover.buy{ background:#119BE3; color:#fff}
+.navPersonal{ margin:48px 0 0 80px;_display:inline;}
+.navPersonal a{ color:#fff}
+.navPersonal a:hover{ color:#119BE3; border-bottom:2px solid #fff}
+.navRight,.navRightPersonal{ margin-top:41px; float:right; color:#808080; font-size:14px; overflow:hidden;line-height:30px; height:30px;}
+.navRight span{ float:left; padding:0 10px; font-size:12px; color:#fbfdc9}
+.navRightPersonal{ color:#fff; margin-top:50px}
+.navRight a{ float:left; color:#fbfdc9}
+.navRightPersonal a{ color:#fff}
+.banner{ height:371px; width:100%; margin:0 auto; background:url(../images/bannerbg.png) top center no-repeat; text-align:center}
+.dashed{ border-bottom:1px dashed #ddd}
+.mainContent{overflow:hidden;width:100%; margin-bottom:35px}
+.mainContent li{ overflow:hidden;}
+.mainContent li a{ overflow:hidden}
+.pic1{ height:350px;width:980px; margin:0 auto}
+.pic2,.pic3,.pic4,.pic5,.pic6{ height:520px; background:url(../images/pic-2.png) top center no-repeat;}
+.pic3{background:url(../images/pic-3.png) top center no-repeat;}
+.pic4{background:url(../images/pic-4.png) top center no-repeat;}
+.pic5{background:url(../images/pic-5.png) top center no-repeat;}
+.pic6{background:url(../images/pic-6.png) top center no-repeat;}
+
+
+/*DOCUMENT
+.documentBg{ width:100%; background:url(../images/documentBg.png) repeat-x; height:200px; overflow:hidden}
+.documentBg h1,.documentBg p{ font-size:60px; width:990px; margin:50px auto 0px; color:#fff}
+.documentBg p{ font-size:16px; color:#D1BBE2; margin:0 auto; padding-left:10px}
+.section{ width:990px; margin:30px auto}
+.section h2{ font-size:30px; color:#999; font-weight:bold; margin-bottom:10px}
+.section li{ line-height:24px; font-size:14px; list-style:inside; padding-left:30px}
+.section li a{ color:#36c}
+.section li a:hover{ color:#0080b1}
+.section li ul li{ list-style-type:circle} */
+/*DOCUMENT-NEW */
+.documentBg{ width:100%;height:143px; overflow:hidden}
+.documentBg h1,.documentBg p{ font-size:40px; width:990px; margin:35px auto 0px; color:#333;}
+.documentBg p{ font-size:16px; color:#666; margin:0 auto; padding-left:10px}
+.section{ width:990px; margin:0 auto; padding:20px 0 30px; min-height:650px; overflow:hidden; position:relative}
+.section h2{ font-size:30px; color:#999; font-weight:bold; margin-bottom:10px}
+.boxLeft{ width:700px; overflow:hidden; float:left}
+.boxLeft ul li{ list-style:none}
+.boxLeft i{ width:40px; float:left; font-weight:bold; text-align:right}
+.boxLeft article{ margin-left:60px}
+.boxLeft article p{ text-indent:30px; margin:7px 0}
+.boxLeft article pre{padding: 1em;border: 1px dashed #2F6FAB;color: #666652; background:#f9f9f9}
+.boxLeft ul{ margin-top:30px}
+.boxRight{ position: absolute; top:25px; right:20px; width:228px; padding:15px 10px 20px; border:1px solid #999; background:#fff}
+.section h3,.section h5{ font-size:15px; font-weight:bold; color:#000; padding-left:15px; border-bottom:1px solid #ddd; line-height:30px}
+.section h5{padding-left:10px; margin-top:35px}
+.section li{ line-height:24px; font-size:12px; list-style:inside; padding-left:10px; cursor:pointer}
+.section li a{ color:#36c}
+.section li a:hover{ color:#0080b1}
+.section li ul li{ list-style-type:circle} 
+.fixer{position:fixed; left:0; top:20px;left:50%; right:50%; margin-left: 225px;_position:absolute;_top:expression(documentElement.scrollTop+10 + "px");box-shadow: 0px 3px 1px #efefef;}
+html {_background: url(xxsfsfs.jpg) fixed;} 
+/*FAQ */
+.faqBg{ background:#F7F7F7; width:100%; padding:50px 0 0; overflow:hidden; min-height:400px}
+.faqIcon{ width:80px; height:80px; line-height:80px; color:#00ADDC; text-align:center; font-size:30px; position:absolute; border-radius:10px; border:4px solid #00ADDC; background:#fff; left:0; top:0}
+.faqArrow{ position:absolute; top:81px; left:25px;border-width:15px 15px 0; border-color:#00ADDC transparent transparent;border-style:solid; height:0; width:0; }
+.faqContent{ margin-left:135px; float:left; overflow:hidden; _display:inline}
+.faqContent dt{ margin:20px 0; line-height:24px; font-size:16px; font-weight:bold}
+.faqContent dt i,.faqContent dd i{ background:#bbb; border-radius:4px; text-align:center; color:#fff; width:24px; height:24px; font-size:14px; line-height:24px; margin-right:15px; font-weight:normal}
+.faqContent dd{ position:relative; margin:0 0 30px 40px; background:#fff; font-size:14px; line-height:26px; padding:30px; border-radius:4px; box-shadow:3px 1px 4px #ddd}
+.faqContent dd i{ position:absolute; left:-40px; top:0}
+/*PRICE */
+.price{ width:990px; margin:0 auto; overflow:hidden; padding:20px 0}
+.price table td{ background:#efefef; border:1px solid #fff; padding-left:5px}
+.price table th{ text-align:center}
+table td.free,table td.standard{ background:#31869B; color:#fff; font-size:20px; text-align:center; font-weight:bold}
+table td.standard{ background:#00b0f0}
+/*personalCenter */
+.tabBox{ border-bottom:1px solid #ddd; overflow:hidden; padding-left:10px; margin:26px 0 0}
+.tabBox a{ display:inline-block; float:left; padding:0 20px; margin-right:15px; height:35px; line-height:35px; font-size:14px}
+.tabBox a.current{ border-radius:5px 5px 0 0; color:#fff; font-weight:bold; background:#01ADDD}
+.searchBox{ border-bottom:1px solid #ddd; padding:15px 10px; overflow:hidden; margin-bottom:20px}
+.searchBox span{ float:left; height:26px; line-height:26px}
+.searchBox input.text{ width:160px; height:24px; line-height:24px; padding-left:5px; border:1px solid #ddd; margin:0 15px 0 5px; float:left}
+.searchBox .select{ padding:4px; border:1px solid #ddd; margin:0 15px 0 5px; float:left}
+.addArea{ padding:5px 10px; overflow:hidden}
+.btnBlue,.btnOrange,.btngrey{ height:29px; line-height:28px; padding:0 20px; color:#fff; display:inline-block; font-size:14px; background:#01ADDD; border-radius:4px; float:left}
+.btnBlue:hover,.btnOrange:hover{ background:#3579A6; color:#fff}
+.btnOrange{ background:#ff7800; float:right}
+.btngrey,.btngrey:hover{ color:#fff; background:#ccc; cursor:default}
+.userInfo{ margin:20px 0; overflow:hidden}
+.userInfo a{ height:28px; line-height:28px; padding:0 20px; border:1px solid #ddd; color:#2283C5; float:left; display:inline-block; margin:0 20px 0 0}
+.userInfo a.current{ color:#094; font-weight:bold}
+.editContent{ border:1px solid #ddd; overflow:hidden; margin-bottom:20px}
+.editContent input[type="text"],.editContent .input-text{ border:1px solid #ddd; height:28px; line-height:28px; width:220px; padding-left:5px}
+.editContent .input-text{background:#efefef; width:260px}
+.editContent ul{ padding:30px 0; font-size:14px}
+
+.blue-btn-coom{padding:0 25px; height:28px;line-height:28px; float:left; background:#25a3e0; color:#fff; margin-left:5px; display:inline-block}
+.blue-btn-coom:hover{ color:#fff; background:#256FB0}
+.gray-btn-coom-border{ padding:0 25px; height:26px; display:inline-block; line-height:26px; color:#666; margin-left:7px;border:1px solid #d6d6d6; background:#f5f5f5; }
+.gray-btn-coom-border:hover{ background:#FCF8E3}
+.newDate{ width:950px; overflow:hidden}
+.newDate ul{ width:49%; float:left}
+.addGroup{ padding:15px; overflow:hidden;position:relative}
+.addGroup li{ padding:8px 0}
+.addGroup .selectBox{ border:1px solid #ddd; padding:10px 20px 0 10px; overflow-x:hidden; overflow-y:auto; height:280px; float:left; }
+.addGroup .selectBox-reset{ margin-left:50px; width:160px; padding-top:24px; height:266px}
+.addGroup .searchId{ border:1px solid #ddd; overflow:hidden; width:150px}
+.addGroup .selectBox li{ padding:4px 0 4px 5px; cursor:pointer}
+.addGroup .selectBox li:hover,.addGroup .selectBox li.current{ background:#efefef}
+.addGroup .selectBox input{ width:125px; height:20px; border:0; line-height:20px; padding-left:5px; float:left}
+.addGroup .selectBox a{ background: url(../images/G-sprite.png) 0 -98px; width:19px; height:19px; float:left; text-indent:-999em; overflow:hidden}
+.addGroup .slectArrow,.addGroup .slectArrow-reset{ border-radius:4px; text-align:center; height:26px; width:26px; line-height:22px; cursor:pointer; position:absolute; left:210px; top:42%; font-size:18px; color:#ff7800; border:1px solid #ddd; font-weight:bold}
+.addGroup .slectArrow:hover,.addGroup .slectArrow-reset:hover{ background:#efefef}
+.addGroup .slectArrow-reset{ top:52%}
+.f-none{ float:none}
+#tipDataWrap{ width:320px; overflow-y:auto; height:200px; padding-left:30px}
+#tipDataWrap li{padding:5px 0}
+
+/* MAIL */
+.mailForm{ margin:30px;overflow:hidden; border-radius:5px; border:1px solid #ddd; box-shadow:1px 1px 3px #efefef; width:700px; padding-bottom:30px}
+.mailForm h1{ height:45px; line-height:45px; color:#999; border-bottom:1px solid #ddd; background:#f9f9f9; font-size:18px; font-weight:bold; padding-left:25px}
+.mailForm h2{height:70px; background:url(../images/reg-logo.png) #3579A6 25px -16px no-repeat; text-indent:-999em}
+.mailForm li{ padding:6px 25px; overflow:hidden}
+.mailForm li a{ color:#f00}
+.mailForm h3{ font-size:16px; font-weight:bold; line-height:26px; padding-left:25px;  margin:20px 0}
+.mailForm li span{ float:right; color:#999}
+/* TIPBOX */
+.tip_box{background-color:#f8f8f9;border:2px #197EC0 solid;display:none; border-radius:3px}
+.tip_box h2{font-size:14px;background:#197EC0;position:relative; padding:5px 10px;color:#fff;}
+.tip-close{position:absolute;right:10px; top:4px;color:#fff;}
+.tip-close:hover{ color:#fff}
+.mainlist{padding:10px 40px 10px 5px; float:left;overflow:hidden}
+.mainlist li{ padding:5px 0}
+.mainlist li label{ width:115px;}
+.mainlist li.label{ padding-left:125px}
+.mainlist ul.tcenter{ padding-left:35px; margin-top:20px}
+.protocol{ width:920px;line-height:26px;padding:0 15px; margin:0 auto}
+.protocol h3{ text-align:center; font-size:28px; font-family:"微软雅黑"; margin:30px auto}
+.protocol .text{ font-size:14px; width:900px; height:280px; padding:0 10px; overflow:auto}
+/*FOOTER */
+.footer{ height:80px; line-height:80px; width:100%; text-align:center}
+.footerIndex{ height:276px; background:url(../images/bottombg.png) top center no-repeat}
+.footerIndex li{ line-height:22px; overflow:hidden; color:#fff}
+.footerIndex li a{ color:#fff}
+.footerBlue{ background:#00addc; color:#fff;}
+.footerBlue a{ color:#fff}
+.footerGrey{ background:#eee; color:#333}
+.footerGrey a{ color:#333}

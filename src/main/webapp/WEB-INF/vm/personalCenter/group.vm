@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>个人中心</title>
+<meta name="keywords" content="个人中心" />
+<meta name="description" content="个人中心" />
+#header()
+</head>
+<body>
+#navigator()
+
+<div class="W990">
+#pcTab("group")
+
+<!--我的分组-->
+<hgroup class="clearfix">
+<div class="searchBox">
+	<span>组名</span><input type="text" class="text" id="groupNameKeyword"/>
+	<span>组ID</span><input type="text" class="text" id="groupIdKeyword"/>
+	<a href="javascript:;" class="btnBlue" onClick="group.search(0)">搜索</a>
+	<span class="ml">设备ID</span><input type="text" class="text" id="deviceIdKeyword"/>
+	<a href="javascript:;" class="btnBlue" onClick="group.searchByDeviceId(0)">搜索</a>
+</div>
+<div id="dataWrap"><img src='images/loading.gif'/></div>
+</hgroup>
+
+</div>
+
+<script id="dataList" type="text/html">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <thead> 
+ <tr>
+    <td width="30%">组名</td>
+    <td width="25%">组ID</td>
+    <td width="35%">备注</td>
+    <td width="10%">组成员</td>
+  </tr>
+  </thead>
+      {{if dataList.length > 0}}
+        {{each dataList}}
+          <tr>
+            <td>{{$value.groupName}}</td>
+            <td>{{$value.groupId}}</td>
+            <td>{{$value.remark}}</td>
+            <td><a href="javascript:;" class="left mr orange viewDev" data="{{$value.groupId}}">查看</a></td>
+          </tr>
+        {{/each}}
+        {{else}}
+          <tr>
+            <th colspan="3">目前暂无数据！</th>
+          </tr>
+      {{/if}}
+</table>
+<select id="pageSelect" class="right m10"></select>
+<ul id="page"></ul>
+</script>
+
+<div class="tip_box" id="viewDev">
+  <div class="form">
+  <div id="tipDataWrap"></div>
+  <script id="tipData" type="text/html">
+  <ul>
+      {{if dataList.length > 0}}
+        {{each dataList as value}}
+          <li>{{value}}</li>
+        {{/each}}
+        {{else}}
+        	<li>没有数据</li>
+      {{/if}}
+  </ul>
+  </script>
+  </div>
+</div>
+#footer()
+#commonJs()
+<script type="text/javascript" src="js/page/group.js" ></script>
+</body>
+</html>
